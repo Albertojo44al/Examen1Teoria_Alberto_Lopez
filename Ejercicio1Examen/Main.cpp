@@ -1,12 +1,17 @@
-#include "Conjunto.h"
+#include "Grafo.h"
 
 
 
 int main() {
 
-	Conjunto A;
+	Conjunto * A = new Conjunto();
+	Conjunto * B = new Conjunto();
 
-	A.create();
-	A.print();
+	A->create("A");
+	B->create("B");
+
+	Secuencia * seq = new Secuencia(A, B);
+
+	seq->print();
 
 }

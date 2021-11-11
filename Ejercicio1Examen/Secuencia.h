@@ -3,10 +3,12 @@
 
 class Secuencia
 {
+public:
 	Secuencia(Conjunto*, Conjunto*);
 	Conjunto* conjuntoA;
 	Conjunto* conjuntoB;
 
+	void print();
 
 };
 

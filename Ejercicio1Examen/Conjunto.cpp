@@ -17,20 +17,21 @@ void Conjunto::print()
 		if (i < this->setLength - 1)
 			cout << ",";
 	}
-	cout << "}\n";
+	cout << "}";
 }
 
-void Conjunto::create()
+void Conjunto::create(string name)
 {
 	char option;
-	cout << "Desea leer un archivo[a] o ingresar valores manualmente[m] ? : ";
+	cout << "\nConjunto " << name;
+	cout << "\nDesea leer un archivo[a] o ingresar valores manualmente[m]?: ";
 	cin >> option;
 	if (option == 'a') {
 		int valid = false;
 		while (!valid) {
 			try {
 				string fileName;
-				cout << "\nIngrese nombre del archivo : ";
+				cout << "\nIngrese solo nombre del archivo : ";
 				cin >> fileName;
 
 				ifstream infile(fileName + ".txt");

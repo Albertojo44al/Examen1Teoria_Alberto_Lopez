@@ -13,7 +13,7 @@ public:
 
 	Conjunto();
 	void print();
-	void create();
+	void create(string);
 
 	int setArray[SET_LENGTH];
 	int setLength = 0;
