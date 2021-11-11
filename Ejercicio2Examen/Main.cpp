@@ -3,27 +3,41 @@
 #include "windows.h"
 
 using namespace std;
+#define size 6
 
-int main() {
+char mat[size][size];
 
-    int n =6;
+void leerArchivo() {
     ifstream myfile;
     myfile.open("reglas.txt");
-    char mat[6][6];
 
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
             myfile >> mat[i][j];
         }
     }
+}
+
+void imprimirOpciones() {
+
+    printf("\x1B[41m\n 1 \033[0m\t");
+    printf("\x1B[43m 2 \033[0m\t");
+    printf("\x1B[45m 3 \033[0m\t");
+    printf("\x1B[42m 4 \033[0m\t");
+    printf("\x1B[44m 5 \033[0m\t\n");
+}
+
+int main() {
+
+    leerArchivo();
         
     bool exit = false;
     char exitChar;
-    cout << "\n* * * * * * * * * * * * I N I C I O * * * * * * * * * * * * \n";
+   
     while (!exit) {
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        cout << "\n* * * * * * * * * * * * I N I C I O * * * * * * * * * * * * \n";
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 switch (mat[i][j]) {
                 case '1':
                     printf("\x1B[41m %c \033[0m", mat[i][j]);
@@ -47,6 +61,7 @@ int main() {
             cout << endl;
         }
 
+        imprimirOpciones();
 
         int j1, j2;
         cout << "\nJugador 1 ingrese su movimiento : ";
@@ -54,7 +69,10 @@ int main() {
         cout << "Jugador 2 ingrese su movimiento : ";
         cin >> j2;
 
-
+        if (j1 > 5 || j1 < 1)
+            cout << "\nMovimiento del jugador 1 no valido\n";
+        if (j2 > 5 || j2 < 1)
+            cout << "\nMovimiento del jugador 2 no valido\n";
 
         char resultado = mat[j2][j1];
         if (resultado == 'P')
@@ -67,10 +85,11 @@ int main() {
         cout << "\nDesea continuar?  Si[s]  No[n] : ";
         cin >> exitChar;
         exit = exitChar == 'n' ? exit = true : false;
-
+        
+            
         system("cls");
 
     }
-    
+    cout << "* *SALIENDO* *";
     return 0;
 }
