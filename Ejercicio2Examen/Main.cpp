@@ -1,11 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include "windows.h"
+#include "color.h"
 
 using namespace std;
 #define size 6
 
 char mat[size][size];
+
+
 
 void leerArchivo() {
     ifstream myfile;
@@ -19,12 +22,13 @@ void leerArchivo() {
 }
 
 void imprimirOpciones() {
-
-    printf("\x1B[41m\n 1 \033[0m\t");
-    printf("\x1B[43m 2 \033[0m\t");
-    printf("\x1B[45m 3 \033[0m\t");
-    printf("\x1B[42m 4 \033[0m\t");
-    printf("\x1B[44m 5 \033[0m\t\n");
+    std::cout << "\n\n";
+    std::cout << " " << dye::on_red(" 1 ") << " ";
+    std::cout << " " << dye::on_yellow(" 2 ") << " ";
+    std::cout << " " << dye::on_purple(" 3 ") << " ";
+    std::cout << " " << dye::on_green(" 4 ") << " ";
+    std::cout << " " << dye::on_blue(" 5 ") << " ";
+    std::cout << "\n";
 }
 
 int main() {
@@ -35,61 +39,64 @@ int main() {
     char exitChar;
    
     while (!exit) {
-        cout << "\n* * * * * * * * * * * * I N I C I O * * * * * * * * * * * * \n";
+        std::cout << dye::green("\n* * * * * * * * * * * * I N I C I O * * * * * * * * * * * * \n");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 switch (mat[i][j]) {
+                case '0':
+                    std::cout << dye::on_white("   ");
+                    break;
                 case '1':
-                    printf("\x1B[41m %c \033[0m", mat[i][j]);
+                    std::cout <<  dye::on_red(" 1 ");
                     break;
                 case '2':
-                    printf("\x1B[43m %c \033[0m", mat[i][j]);
+                    std::cout << dye::on_yellow(" 2 ") ;
                     break;
                 case '3':
-                    printf("\x1B[45m %c \033[0m", mat[i][j]);
+                    std::cout << dye::on_purple(" 3 ");
                     break;
                 case '4':
-                    printf("\x1B[42m %c \033[0m", mat[i][j]);
+                    std::cout  << dye::on_green(" 4 ") ;
                     break;
                 case '5':
-                    printf("\x1B[44m %c \033[0m", mat[i][j]);
+                    std::cout  << dye::on_blue(" 5 ");
                     break;
                 default:
-                    cout << " " << mat[i][j] << " ";
+                    std::cout << " "  << mat[i][j] << " ";
                 }
             }
-            cout << endl;
+            std::cout << endl;
         }
 
         imprimirOpciones();
 
         int j1, j2;
-        cout << "\nJugador 1 ingrese su movimiento : ";
+        std::cout << "\nJugador 1 ingrese su movimiento : ";
         cin >> j1;
-        cout << "Jugador 2 ingrese su movimiento : ";
+        std::cout << "Jugador 2 ingrese su movimiento : ";
         cin >> j2;
 
         if (j1 > 5 || j1 < 1)
-            cout << "\nMovimiento del jugador 1 no valido\n";
+            std::cout << "\nMovimiento del jugador 1 no valido\n";
         if (j2 > 5 || j2 < 1)
-            cout << "\nMovimiento del jugador 2 no valido\n";
+            std::cout << "\nMovimiento del jugador 2 no valido\n";
 
         char resultado = mat[j2][j1];
         if (resultado == 'P')
-            cout << "\n* *Jugador 2 Gana* *\n";
+            std::cout << dye::green("\n* *JUGADOR 2 GANA* *\n");
         if (resultado == 'G')
-            cout << "\n* *Jugador 1 Gana* *\n";
+            std::cout << dye::green("\n* *JUGADOR 1 GANA* *\n");
         if (resultado == 'E')
-            cout << "\n* *Empate* *\n";
+            std::cout << dye::yellow("\n* *EMPATE* *\n");
 
-        cout << "\nDesea continuar?  Si[s]  No[n] : ";
+        std::cout << "\nDesea continuar?  Si[s]  No[n] : ";
         cin >> exitChar;
         exit = exitChar == 'n' ? exit = true : false;
         
             
         system("cls");
-
+       
     }
-    cout << "* *JUEGO TERMINADO* *";
+    std::cout << "* *JUEGO TERMINADO* *";
     return 0;
 }

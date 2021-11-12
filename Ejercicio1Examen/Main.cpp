@@ -14,5 +14,9 @@ int main() {
 
 	seq->print();
 
-	Grafo
+	Grafo G;
+
+	G.Init();
+	G.FillGraph(seq);
+	G.displayMatrix();
 }
