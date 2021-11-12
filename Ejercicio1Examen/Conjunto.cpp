@@ -5,16 +5,16 @@ Conjunto::Conjunto() {
 	for (int i = 0; i < SET_LENGTH; i++) {
 		this->setArray[i] = 0;
 	}
-	this->setLength = 0;
+	this->length = 0;
 }
 
 void Conjunto::print()
 {
 	cout << "{";
-	for (int i = 0; i < this->setLength; i++) {
+	for (int i = 0; i < this->length; i++) {
 
 		cout << this->setArray[i];
-		if (i < this->setLength - 1)
+		if (i < this->length - 1)
 			cout << ",";
 	}
 	cout << "}";
@@ -26,15 +26,11 @@ void Conjunto::create(string name)
 	cout << "\nConjunto " << name;
 	cout << "\nDesea leer un archivo[a] o ingresar valores manualmente[m]?: ";
 	cin >> option;
-	if (option == 'a') {
+	if (option != 'm') {
 		int valid = false;
 		while (!valid) {
 			try {
-				string fileName;
-				cout << "\nIngrese solo nombre del archivo : ";
-				cin >> fileName;
-
-				ifstream infile(fileName + ".txt");
+				ifstream infile(name + ".txt");
 				string sLine;
 
 				if (infile.good())
@@ -46,8 +42,8 @@ void Conjunto::create(string name)
 
 					if (sLine[i] != ',') {
 
-						this->setArray[this->setLength] = stoi(&sLine[i]);
-						this->setLength++;
+						this->setArray[this->length] = stoi(&sLine[i]);
+						this->length++;
 					}
 				}
 				valid = true;
@@ -75,13 +71,13 @@ void Conjunto::create(string name)
 			
 				cout << "Ingrese el elemento "<<i+1<<" : ";
 
-				while (!(cin >> this->setArray[this->setLength])) {
+				while (!(cin >> this->setArray[this->length])) {
 					cin.clear();
 					cin.ignore(numeric_limits<streamsize>::max(), '\n');
 					cout << "el dato debe ser un numero entero\n";
 					cout << "ingrese el elemento " << i + 1 << " : ";
 				}
-				this->setLength++;
+				this->length++;
 
 		}
 

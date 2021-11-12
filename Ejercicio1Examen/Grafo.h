@@ -11,7 +11,6 @@ class Vertice {
 	Vertice* sig;
 	Arista* ady;
 	string nombre;
-	Secuencia* secuencia;
 	friend class Grafo;
 
 };
@@ -26,15 +25,17 @@ class Arista {
 
 class Grafo
 {
-	Vertice* h;
+	Vertice* root;
+
 public:
-	void Inicializa();
-	bool Vacio();
-	int Tamano();
+	void Init();
+	bool Empty();
+	int Size();
 	Vertice* GetVertice(string nombre);
-	void InsertarArista(Vertice* origen, Vertice* destino, int peso);
-	void insertaVertice(string nombre);
-	void ListaAdyacencia();
+	void InsertArista(Vertice* origen, Vertice* destino, int peso);
+	void InsertVertice(string nombre);
+	void FillGraph(Secuencia* );
+	void displayMatrix();
 };
 
 

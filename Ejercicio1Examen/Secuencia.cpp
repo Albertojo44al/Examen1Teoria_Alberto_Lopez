@@ -2,16 +2,16 @@
 
 Secuencia::Secuencia(Conjunto * conjuntoA, Conjunto * conjuntoB) {
 
-	this->conjuntoA = conjuntoA;
-	this->conjuntoB = conjuntoB;
+	this->setV = conjuntoA;
+	this->setE = conjuntoB;
 
 }
 
 void Secuencia::print() {
 	cout << "\n\n( ";
-	this->conjuntoA->print();
+	this->setV->print();
 	cout << " , ";
-	this->conjuntoB->print();
+	this->setE->print();
 	cout << " )\n";
 }
 

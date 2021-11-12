@@ -5,8 +5,9 @@ class Secuencia
 {
 public:
 	Secuencia(Conjunto*, Conjunto*);
-	Conjunto* conjuntoA;
-	Conjunto* conjuntoB;
+	Conjunto* setV;
+	Conjunto* setE;
+
 
 	void print();
 

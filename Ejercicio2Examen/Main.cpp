@@ -90,6 +90,6 @@ int main() {
         system("cls");
 
     }
-    cout << "* *SALIENDO* *";
+    cout << "* *JUEGO TERMINADO* *";
     return 0;
 }

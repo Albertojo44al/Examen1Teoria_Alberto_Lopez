@@ -16,7 +16,7 @@ public:
 	void create(string);
 
 	int setArray[SET_LENGTH];
-	int setLength = 0;
+	int length = 0;
 
 };
 
